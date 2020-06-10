@@ -1,40 +1,36 @@
-# include<stdio.h>
-# include<conio.h>
+#include<stdio.h>
+#include<conio.h>
 
-int Insertion_sort(int A[],int n)
+void Insertion_sort(int a[],int n)
 {
-    int i, value, hole;
-    for (i=1;i<n;i++)
+    for(int i=0;i<n-1;i++)
     {
-    value = A[i];
-    hole = i;
-    while(hole>0 && A[hole-1]>value)
-    {
-        A[hole]=A[hole-1];
-        hole=hole-1;
-    }
-    A[hole]=value;
-    }
-
-
-}
-    
-
-
-int Value_print(int A[],int n)
-{
-    for(int i=0;i<n;i++)
-    {
-        printf("%d\t",A[i]);
+        for(int j=i+1;j<n;j++)
+        {
+            if(a[i]>a[j])
+            {
+            int temp=a[i];
+            a[i]=a[j];
+            a[j]=temp;
+            }
+        }
     }
 }
 
 int main()
 {
-    printf("Insertion sort \n");
-    int A[5] = {7, 2, 1, 35, 15};
-    int n = sizeof(A)/sizeof(A[0]);
-    Insertion_sort(A,n);
-    Value_print(A,n);
-    return 0;
+    int a[100],n;
+    printf("Insertion sort\n");
+    printf("Enter the number of terms: ");
+    scanf("%d",&n);
+
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    Insertion_sort(a,n);
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
 }
